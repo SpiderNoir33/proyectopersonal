@@ -1,0 +1,27 @@
+{
+  "name": "mi-tienda",
+  "private": true,
+  "type": "module",
+  "description": "Monorepo: backend Express + frontend React + schemas Zod compartidos",
+  "workspaces": [
+    "backend",
+    "front end",
+    "shared"
+  ],
+  "allowScripts": {
+    "esbuild": true,
+    "mongodb-memory-server@11.3.0": true
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm test -w ecommerce-backend",
+    "build": "npm run build -w \"front end\"",
+    "start": "npm start -w ecommerce-backend"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.13.0"
+  }
+}

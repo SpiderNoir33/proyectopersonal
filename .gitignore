@@ -1,0 +1,18 @@
+# Dependencias
+node_modules/
+
+# Entorno (credenciales reales — jamás se commitean)
+.env
+.env.local
+.env.*.local
+.env.test
+
+# Builds
+dist/
+backend/uploads/
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store

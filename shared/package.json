@@ -1,0 +1,15 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Schemas Zod compartidos entre backend y frontend",
+  "type": "module",
+  "exports": {
+    "./schemas/product.js": "./schemas/product.js",
+    "./schemas/auth.js": "./schemas/auth.js",
+    "./schemas/user.js": "./schemas/user.js"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}
