@@ -135,6 +135,7 @@ Las limitantes actuales de mi proyecto, a pesar de la supervisión, el frontend 
 - el sistema de pago es demostración y es estético
 - no está incluido un SMTP
 - las imágenes se guardan en local
+- el proyecto se mueve en local, en despligue en servidor no esta testeado
 
 ### Algunas cosas honestas sobre mi
 
@@ -143,3 +144,82 @@ Las limitantes actuales de mi proyecto, a pesar de la supervisión, el frontend 
 - Hay cosas que siento que no se, pero sigo motivado por saber lo necesario para tener experiencia en tecnologias importantes
 - Aveces si no entiendo, recurro al uso de la IA para avanzar y arreglar bugs
 - Este proyecto lo he acelerado con IA bajo supervision y utilizando las practicas que aprendi
+
+## Como usarlo
+
+## Requisitos
+
+- Node.js 22+
+- MongoDB: Atlas (una cuenta gratis) o una instancia local
+
+## 1. Instalar primero
+
+Desde la raiz del proyecto debes poner:
+
+​```bash
+npm install
+​```
+
+## 2. Configurar variables de entorno
+
+El backend necesita un archivo `.env` con la conexión a la base de datos
+y el secreto para firmar tokens. Este archivo **no se sube a GitHub**
+(contiene credenciales), así que cada quien crea el suyo:
+
+​```bash
+cp backend/.env.example backend/.env
+​```
+
+Luego editar `backend/.env` y rellenar:
+
+| Variable | Qué es |
+
+|----------|--------|
+| `MONGO_URI` | Cadena de conexión a MongoDB Atlas o local |
+| `JWT_SECRET` | Secreto para firmar los JWT (mín. 32 caracteres) |
+| `CLIENT_URL` | Origen del frontend en desarrollo (`http://127.0.0.1:5173`) |
+
+El resto de variables ya vienen con valores por defecto razonables.
+
+> El `.env.example` está commiteado a propósito: documenta qué variables
+> existen sin filtrar ningún valor real.
+
+## 3. Levantar el proyecto
+
+Backend (puerto 3000):
+
+dentro de backend (cd en el directorio backend) pondras:
+
+​```bash
+npm run dev
+​```
+
+Frontend (puerto 5173, en otra terminal):
+y en el frontend (cd en el directorio front end) pondras:
+
+​```bash
+npm run dev
+​```
+
+En desarrollo el frontend usa el proxy de Vite para llegar al backend,
+así que no hace falta configurar CORS a mano.
+
+## 4. Tests
+
+​```bash
+npm test
+​```
+
+## Crear un usuario admin (opcional)
+
+Los endpoints de administrador (`GET /users`, modificar productos de otros)
+requieren rol admin. Para crear uno nuevo o promover uno existente:
+
+```bash
+cd backend
+node scripts/createAdmin.js tu@email.com
+- Si el email ya existe → se promueve a admin
+- Si no existe → te pide una contraseña (mínimo 8 caracteres),
+o puedes definirla con la variable ADMIN_PASSWORD antes de ejecutarlo
+Ojo: se debe tener el .env ya configurado, porque el script se conecta
+a la misma base de datos que el backend.
