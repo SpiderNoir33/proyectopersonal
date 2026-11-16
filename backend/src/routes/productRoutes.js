@@ -9,8 +9,6 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controllers/productController.js";
-// Import directo de los schemas compartidos: los antiguos shims
-// controllers/*Validation.js eran indirección muerta.
 import {
   createProductSchema,
   updateProductSchema,
@@ -29,7 +27,6 @@ router.use(apiLimiter);
 router.get("/", validateQuery(listProductsQuerySchema), getProducts);
 router.get("/mine", protect, getMyProducts);
 router.get("/name/:nombre", getProductByName);
-// Antes de /:id si no, "/algo/algo" lo comería el parámetro :id.
 router.get("/:slug/:id", getProductBySlugId);
 router.get("/:id", getProductById);
 

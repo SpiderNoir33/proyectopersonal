@@ -66,9 +66,6 @@ export const getProductByName = catchAsync(async (req, res, next) => {
   });
 });
 
-// Ambos deben coincidir (slug + id): cambiar una parte da 404, asi una URL
-// solo es válida completa. El id no es enumerable y el sufijo aleatorio del
-// slug añade 48 bits más.
 export const getProductBySlugId = catchAsync(async (req, res, next) => {
   const { slug, id } = req.params;
 
