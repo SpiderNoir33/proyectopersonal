@@ -123,26 +123,18 @@ Enfocado en hacer un producto de prueba que fuera seguro de usar en la práctica
 - Nombres UUID generados por el servidor, por ende evita ataques path traversal
 - URLs de imagen solo http(s) en el esquema
 
-## Limitantes actuales del proyecto
+## Alcance actual y mejoras a futuro
 
-Las limitantes actuales de mi proyecto, a pesar de la supervisión, el frontend utiliza un diseño simple y en parte está generado por IA (utilizando bases del frontend) y observando a detalle qué hace cada sintaxis de React para acelerar el proceso de la capa visual, además de las siguientes limitaciones técnicas que no he resuelto:
+Las limitantes actuales de mi proyecto, a pesar de la supervisión, el frontend utiliza un diseño simple (utilizando bases del frontend) y observando a detalle qué hace cada sintaxis de React para acelerar el proceso de la capa visual, además de las siguientes limitaciones técnicas que no he resuelto:
 
-- denylist in-memory (no escala a multi-instancia)
-- sin carrito real
+- Revocación de tokens (denylist) en memoria para entorno local (migraría a Redis en producción)
+- Alcance actual enfocado en la API REST, autenticación y seguridad; el flujo de pago y carrito son simulados en el frontend
 - checkout es una demo, no lleva un refresh token
-- no está configurado para desplegar en servidores debido a limitaciones económicas y limitaciones de servicios como Railway, Render, etc., por lo cual funciona solo en local
+- Funciona solo en local
 - el sistema de pago es demostración y es estético
 - no está incluido un SMTP
 - las imágenes se guardan en local
 - el proyecto se mueve en local, en despligue en servidor no esta testeado
-
-### Algunas cosas honestas sobre mi
-
-- El backend es donde mas entiendo un poco mas (ya que hice un curso de javascript, busque mucho sobre node, y express), pero solo se lo basico en el frontend
-- Honestamente, no me gusta el frontend
-- Hay cosas que siento que no se, pero sigo motivado por saber lo necesario para tener experiencia en tecnologias importantes
-- Aveces si no entiendo, recurro al uso de la IA para avanzar y arreglar bugs
-- Este proyecto lo he acelerado con IA bajo supervision y utilizando las practicas que aprendi
 
 ## Como usarlo
 
@@ -215,6 +207,8 @@ requieren rol admin. Para crear uno nuevo o promover uno existente:
 
 ```bash
 cd backend
+```
+
 node scripts/createAdmin.js tu@email.com
 - Si el email ya existe → se promueve a admin
 - Si no existe → te pide una contraseña (mínimo 8 caracteres),
