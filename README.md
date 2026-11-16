@@ -18,7 +18,6 @@ Una tienda virtual de productos electrónicos, ofreciendo una variedad de produc
 Se realizó con el propósito de aprendizaje y conseguir empleo formal como Dev Junior en Backend y aprender a fondo sobre Ciberseguridad a futuro.
 
 | Capa | Tecnología | Por qué lo usé |
-
 |------|------------|----------------|
 | Runtime | NodeJS (ESM) | Fácil aplicación y usado para el aprendizaje al haber estudiado las bases de JS |
 | API | Express 4 | Usado para aprender la tecnología y observar cómo interactúa con los servidores |
@@ -173,7 +172,6 @@ cp backend/.env.example backend/.env
 Luego editar `backend/.env` y rellenar:
 
 | Variable | Qué es |
-
 |----------|--------|
 | `MONGO_URI` | Cadena de conexión a MongoDB Atlas o local |
 | `JWT_SECRET` | Secreto para firmar los JWT (mín. 32 caracteres) |
